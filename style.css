@@ -1,0 +1,98 @@
+:root{
+    --text-color: white;
+    --background-color: #263343;
+    --accent-color: rgba(152, 191, 198, 0.999);
+}
+
+/* 변수를 선언하여 색깔 지정을 쉽게 할 수 있음 예시 a{}*/
+body{
+    margin: 0;
+    font-family: 'Source Sans Pro';
+}
+a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /*가로축 기준으로 좌우에 대한 정렬관장 between은 요소들 사이에 동일한 간격을 둠*/
+    align-items: center;/*내부 상하관계 정렬 상태*/
+    background-color: #263343;
+    padding: 8px 12px; /*상하 좌우*/
+}
+
+.navbar__logo{
+    font-size: 24px;
+    color: white;
+}
+
+.navbar__logo i {
+    color:rgba(152, 191, 198, 0.999);
+}
+
+.navbar__menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.navbar__menu li{
+    padding: 8px 12px;
+}
+.navbar__menu li:hover { /*마우스를 올려두었을때 색깔*/
+    background-color: rgba(152, 191, 198, 0.999);
+    border-radius: 4px;
+}
+.navbar__icons {
+    list-style: none;
+    color: #fff;
+    display: flex;
+    padding-left: 0; /*없애지 않으면 창이 작을때 아이콘 가운데 정렬이 불가능함*/
+}
+
+.navbar__icons li {
+    padding: 8px 12px;
+}
+
+.navbar__toogleBtn {
+    display: none; /*none을 지정해주어 bar가 화면이 작아졌을때만 나오게 함*/
+    position: absolute;
+    right: 32px; /*오른쪽에서 32px떨어진곳에 붙임*/
+    font-size: 24px;
+    color: rgba(152, 191, 198, 0.999);
+}
+
+@media screen and (max-width: 768px) {
+    .navbar{
+        flex-direction: column; /*row 에서 column으로 바꿈*/
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+
+    .navbar__menu {
+        display: none; /*축소된 화면에서 bar를 누르기 전 메뉴가 보이지 않도록 함*/
+        flex-direction: column;
+        align-items: center;
+        width: 100%; /*해주지 않으면 너비가 작아 왼쪽에 붙음*/
+    }
+
+    .navbar__menu li{
+        width: 100%;
+        text-align: center; /*너비가 넓어졌을 때 텍스트는 자동으로 왼쪽 정렬이 됨*/
+    }
+    .navbar__icons{
+        display: none;/*축소된 화면에서 bar를 누르기 전 아이콘이 보이지 않도록 함*/
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar__toogleBtn {
+        display: block; /* max width 768px일때만 toogleBtn이 나오게 함*/
+    }
+
+    .navbar__menu.active,
+    .navbar__icons.active{
+        display: flex;
+    } /*active가 되면 다시 보임 */
+}
